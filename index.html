@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>YouTube Guess Game</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>🎵 Anucdle 🎵</h1>
+
+  <div id="player-container">
+    <iframe id="ytplayer"
+      src=""
+      allow="autoplay"
+      width="560"
+      height="315"
+      frameborder="0"
+      style="display:none;">
+    </iframe>
+    <div id="cover">Press Start to play!</div>
+  </div>
+
+  <button id="startBtn">Start</button>
+  <button id="showBtn">Show Video</button>
+  <input id="guessInput" type="text" placeholder="Your guess..." />
+  <button id="submitBtn">Submit Guess</button>
+
+  <p id="result"></p>
+
+  <script type="module" src="/src/index.ts"></script>
+</body>
+</html>
