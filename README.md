@@ -1,3 +1,5 @@
+![Anuc my beloved](anuc.jpg)
+
 # A N U C D L E
 
 Fair warnign this shit is ass. Proceed at own risk!

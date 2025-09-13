@@ -20,3 +20,6 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
+
+# Secrets
+secrets.ts

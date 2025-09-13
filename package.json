@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node-fetch": "^2.6.13",
     "typescript": "^5.9.2",
     "vite": "^7.1.5"
   },
   "dependencies": {
+    "node-fetch": "^3.3.2",
     "yaml": "^2.8.1"
   }
 }
