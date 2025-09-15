@@ -66,6 +66,7 @@ export class DomController {
       }
       return result;
     };
+
     colorblindBtn.addEventListener("click", () => {
       colorblindMode = !colorblindMode;
       colorblindBtn.textContent = colorblindMode
