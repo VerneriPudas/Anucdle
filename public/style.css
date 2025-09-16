@@ -1,3 +1,11 @@
+:root {
+  --player-width: 560px;
+  --player-height: 315px;
+
+  --input-width: 300px;
+  --input-height: 30px;
+}
+
 body {
   font-family: sans-serif;
   text-align: center;
@@ -6,16 +14,37 @@ body {
   background-size: cover;
 }
 
+#guessInput {
+  width: var(--input-width);
+  height: var(--input-height);
+  margin: 5px auto 5px auto;
+}
+
+#submitBtn {
+  padding: 8px;
+  margin-top: 5px;
+  font-size: 1em;
+}
+
+.button-container button {
+  font-size: 1em;
+}
+
 #player-container {
   position: relative;
   margin: 1rem auto;
-  width: 560px;
-  height: 315px;
+  width: var(--player-width);
+  height: var(--player-height);
   background: black;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#player-container iframe {
+  width: 100%;
+  height: 100%;
 }
 
 #cover {
@@ -27,4 +56,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Improve player size for larger viewports */
+@media (min-width: 2048px) and ( min-height: 1152px) {
+  #player-container {
+    width: calc(var(--player-width) * 1.5);
+    height: calc(var(--player-height) * 1.5); 
+  }
+
+  #guessInput {
+    width: calc(var(--input-width) * 1.2);
+    height: calc(var(--input-height) * 1.2);
+    font-size: 1.5em;
+  }
+
+  #guesses {
+    font-size: 1.5em;
+  }
 }
