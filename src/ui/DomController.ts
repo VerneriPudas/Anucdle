@@ -175,8 +175,7 @@ export class DomController {
       cover.style.display = "none"; // hide cover
     });
 
-    /* On form submit */
-
+    /* Handle submit when user gives a guess */
     const guessForm = document.getElementById("guess-form") as HTMLFormElement;
     guessForm.addEventListener("submit", (ev) => {
       ev.preventDefault();
@@ -203,6 +202,30 @@ export class DomController {
         }`;
       }
       guessInput.value = "";
+    });
+
+    // Handle main menu logic
+    const classicButton = document.getElementById(
+      "classic-mode-btn"
+    ) as HTMLButtonElement;
+    const endlessButton = document.getElementById(
+      "endless-mode-btn"
+    ) as HTMLButtonElement;
+
+    classicButton.addEventListener("click", (ev) => {
+      const classicGame = document.getElementById("game-wrapper");
+      if (classicGame) {
+        classicGame.style.display = "block";
+      }
+
+      const mainMenu = document.getElementById("main-menu");
+      if (mainMenu) {
+        mainMenu.style.display = "none";
+      }
+    });
+
+    endlessButton.addEventListener("click", (ev) => {
+      // Do something more
     });
 
     /*
