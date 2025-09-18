@@ -90,6 +90,14 @@ export class Game {
     return this.dailyVideos.find((vid) => vid.date === randomDate) || null;
   }
 
+  startEndlessMode(): string {
+    this.currentVideo = this.getRandomVideo();
+    if (!this.currentVideo) return "";
+    // Extract video ID from the URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID)
+    const match = this.currentVideo.url.match(/[?&]v=([^&]+)/);
+    return match ? match[1] : "";
+  }
+
   start(): string {
     this.currentVideo = this.getTodaysVideo();
     if (!this.currentVideo) return "";

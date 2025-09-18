@@ -160,15 +160,6 @@ export class DomController {
       submitBtn.disabled = false;
     }
 
-    startBtn.addEventListener("click", () => {
-      const videoId = this.game.start();
-      iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
-      iframe.style.display = "block";
-      cover.style.display = "flex";
-      cover.textContent = "It's Anuc time!";
-      resetGame();
-    });
-
     // Show video button: reveals the iframe for manual playback
     showBtn.addEventListener("click", () => {
       iframe.style.display = "block"; // unhide iframe
@@ -218,14 +209,57 @@ export class DomController {
         classicGame.style.display = "block";
       }
 
+      // Hide main menu when mode is selected
       const mainMenu = document.getElementById("main-menu");
       if (mainMenu) {
         mainMenu.style.display = "none";
       }
+
+      // Set mode name
+      const modeHeadline = document.getElementById("mode-name");
+      if (modeHeadline) {
+        modeHeadline.innerHTML = "Classic mode";
+      }
+
+      // Set mode specific event listener
+      startBtn.addEventListener("click", () => {
+        const videoId = this.game.start();
+        iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
+        iframe.style.display = "block";
+        cover.style.display = "flex";
+        cover.textContent = "It's Anuc time!";
+        resetGame();
+      });
     });
 
     endlessButton.addEventListener("click", (ev) => {
-      // Do something more
+      const endlessGame = document.getElementById("game-wrapper");
+      if (endlessGame) {
+        endlessGame.style.display = "block";
+      }
+
+      // Hide main menu when mode is selected
+      const mainMenu = document.getElementById("main-menu");
+      if (mainMenu) {
+        mainMenu.style.display = "none";
+      }
+
+      // Set mode name
+      const modeHeadline = document.getElementById("mode-name");
+      if (modeHeadline) {
+        modeHeadline.innerHTML = "Endless mode";
+      }
+
+      // This is bit hacky since user cannot change game mode without refreshing the page
+      // otherwise event listeners will break
+      startBtn.addEventListener("click", () => {
+        const videoId = this.game.startEndlessMode();
+        iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
+        iframe.style.display = "block";
+        cover.style.display = "flex";
+        cover.textContent = "It's Anuc time!";
+        resetGame();
+      });
     });
 
     /*
