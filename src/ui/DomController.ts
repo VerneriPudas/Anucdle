@@ -160,23 +160,13 @@ export class DomController {
       submitBtn.disabled = false;
     }
 
-    startBtn.addEventListener("click", () => {
-      const videoId = this.game.start();
-      iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
-      iframe.style.display = "block";
-      cover.style.display = "flex";
-      cover.textContent = "It's Anuc time!";
-      resetGame();
-    });
-
     // Show video button: reveals the iframe for manual playback
     showBtn.addEventListener("click", () => {
       iframe.style.display = "block"; // unhide iframe
       cover.style.display = "none"; // hide cover
     });
 
-    /* On form submit */
-
+    /* Handle submit when user gives a guess */
     const guessForm = document.getElementById("guess-form") as HTMLFormElement;
     guessForm.addEventListener("submit", (ev) => {
       ev.preventDefault();
@@ -203,6 +193,73 @@ export class DomController {
         }`;
       }
       guessInput.value = "";
+    });
+
+    // Handle main menu logic
+    const classicButton = document.getElementById(
+      "classic-mode-btn"
+    ) as HTMLButtonElement;
+    const endlessButton = document.getElementById(
+      "endless-mode-btn"
+    ) as HTMLButtonElement;
+
+    classicButton.addEventListener("click", (ev) => {
+      const classicGame = document.getElementById("game-wrapper");
+      if (classicGame) {
+        classicGame.style.display = "block";
+      }
+
+      // Hide main menu when mode is selected
+      const mainMenu = document.getElementById("main-menu");
+      if (mainMenu) {
+        mainMenu.style.display = "none";
+      }
+
+      // Set mode name
+      const modeHeadline = document.getElementById("mode-name");
+      if (modeHeadline) {
+        modeHeadline.innerHTML = "Classic mode";
+      }
+
+      // Set mode specific event listener
+      startBtn.addEventListener("click", () => {
+        const videoId = this.game.start();
+        iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
+        iframe.style.display = "block";
+        cover.style.display = "flex";
+        cover.textContent = "It's Anuc time!";
+        resetGame();
+      });
+    });
+
+    endlessButton.addEventListener("click", (ev) => {
+      const endlessGame = document.getElementById("game-wrapper");
+      if (endlessGame) {
+        endlessGame.style.display = "block";
+      }
+
+      // Hide main menu when mode is selected
+      const mainMenu = document.getElementById("main-menu");
+      if (mainMenu) {
+        mainMenu.style.display = "none";
+      }
+
+      // Set mode name
+      const modeHeadline = document.getElementById("mode-name");
+      if (modeHeadline) {
+        modeHeadline.innerHTML = "Endless mode";
+      }
+
+      // This is bit hacky since user cannot change game mode without refreshing the page
+      // otherwise event listeners will break
+      startBtn.addEventListener("click", () => {
+        const videoId = this.game.startEndlessMode();
+        iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
+        iframe.style.display = "block";
+        cover.style.display = "flex";
+        cover.textContent = "It's Anuc time!";
+        resetGame();
+      });
     });
 
     /*
