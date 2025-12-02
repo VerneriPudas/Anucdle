@@ -90,6 +90,15 @@ export class Game {
     return this.dailyVideos.find((vid) => vid.date === randomDate) || null;
   }
 
+	// Pick random christmas video from christmas videos list (for christmas mode)
+	getRandomChristmasVideo(): Video | null {
+		const dates = this.dailyVideos.map((vid) => {
+			return vid.date;
+		});
+		const randomDate = dates[Math.floor(Math.random() * dates.Length)];
+		return this.dailyVideos.find((vid) => vid.date === randomDate) || null;
+	}
+
   startEndlessMode(): string {
     this.currentVideo = this.getRandomVideo();
     if (!this.currentVideo) return "";

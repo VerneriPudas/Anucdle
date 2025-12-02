@@ -34,8 +34,6 @@ export class DomController {
     let gameOver = false;
     let colorblindMode = false;
 
-    // Highlight matching parts of guess in green
-
     // Highlight matching substrings in green, others in red
     const highlightGuess = (guess: string, answer: string): string => {
       if (!answer) return guess;
@@ -202,6 +200,9 @@ export class DomController {
     const endlessButton = document.getElementById(
       "endless-mode-btn"
     ) as HTMLButtonElement;
+		const christmasButton = document.getElementById(
+			"christmas-mode-btn"
+		) as HTMLButtonElement;
 
     classicButton.addEventListener("click", (ev) => {
       const classicGame = document.getElementById("game-wrapper");
@@ -261,6 +262,37 @@ export class DomController {
         resetGame();
       });
     });
+
+		christmasButton.addEventListener("click", (ev) => {
+      const christmasGame = document.getElementById("game-wrapper");
+      if (christmasGame) {
+        christmasGame.style.display = "block";
+      }
+
+      // Hide main menu when mode is selected
+      const mainMenu = document.getElementById("main-menu");
+      if (mainMenu) {
+        mainMenu.style.display = "none";
+      }
+
+      // Set mode name
+      const modeHeadline = document.getElementById("mode-name");
+      if (modeHeadline) {
+        modeHeadline.innerHTML = "Christmas mode";
+      }
+
+      // This is bit hacky since user cannot change game mode without refreshing the page
+      // otherwise event listeners will break
+      startBtn.addEventListener("click", () => {
+        const videoId = this.game.startChristmasMode();
+        iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
+        iframe.style.display = "block";
+        cover.style.display = "flex";
+        cover.textContent = "It's Anuc time!";
+        resetGame();
+      });
+    });
+
 
     /*
     // Submit guess button
