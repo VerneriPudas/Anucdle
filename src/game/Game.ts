@@ -67,6 +67,7 @@ type Video = {
 
 export class Game {
   private dailyVideos: Video[] = [];
+	private christmasVideos: Video[] = [];
   private currentVideo: Video | null = null;
 
   constructor() {
@@ -97,7 +98,7 @@ export class Game {
 		const dates = this.christmasVideos.map((vid) => {
 			return vid.date;
 		});
-		const randomDate = dates[Math.floor(Math.random() * dates.Length)];
+		const randomDate = dates[Math.floor(Math.random() * dates.length)];
 		return this.christmasVideos.find((vid) => vid.date === randomDate) || null;
 	}
 
