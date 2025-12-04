@@ -269,6 +269,15 @@ export class DomController {
         christmasGame.style.display = "block";
       }
 
+      // Add element for snowfall into page body
+      const snowfallLayer1 = document.createElement("div");
+      snowfallLayer1.className = "snowfall layer1";
+      document.body.prepend(snowfallLayer1);
+
+      const snowfallLayer2 = document.createElement("div");
+      snowfallLayer2.className = "snowfall layer2";
+      document.body.prepend(snowfallLayer2);
+
       // Hide main menu when mode is selected
       const mainMenu = document.getElementById("main-menu");
       if (mainMenu) {

@@ -4,21 +4,150 @@
 
   --input-width: 300px;
   --input-height: 30px;
-  --snowfall: 20s;
+  --snowfall-duration: 20s;
+  --snowsize: 450px;
 }
 
 body {
   font-family: sans-serif;
   text-align: center;
   padding: 2rem;
-  background: url("anuc2.jpg") no-repeat center center fixed;
-  background-size: cover;
+  min-block-size: 100vh;
+  /*background:
+    linear-gradient(white, red 85%) no-repeat,
+    url("anuc2.jpg") fixed no-repeat center / cover;
+  */
+  background: lightblue;
+  background-blend-mode: soft-light;
+
+  /* Necessary for snowfall */
+  position: relative;
+  /*animation: snowing var(--snowfall-duration) linear infinite; */
+}
+
+/* Snowfall animation */
+
+@property --y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: -1%;
+}
+
+.snowfall.layer1,
+.snowfall.layer1::before,
+.snowfall.layer1::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  overflow: hidden;
+
+  background-image:
+    radial-gradient(
+      circle at 10% calc(var(--y) * 0.97),
+      #fff 6px,
+      transparent 20px
+    ),
+    radial-gradient(
+      circle at 45% calc(var(--y) * 1.3),
+      #fff 6px,
+      transparent 20px
+    );
+}
+
+.snowfall.layer1 {
+  animation: snowing 10s linear infinite;
+  background-size: 20% 100%;
+}
+
+.snowfall.layer1::before {
+  inset: -4rem 0 0;
+  background-size: 12% 100%;
+  opacity: 0.8;
+  animation:
+    snowing 12s linear infinite,
+    wind 15s ease-in-out infinite;
+}
+
+.snowfall.layer1::after {
+  inset: -8rem 0 0;
+  background-size: 15% 100%;
+  opacity: 0.7;
+  animation:
+    snowing 9s linear infinite,
+    wind 8s ease-in-out infinite;
+}
+
+.snowfall.layer2,
+.snowfall.layer2::before,
+.snowfall.layer2::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  overflow: hidden;
+
+  background-image:
+    radial-gradient(
+      circle at 10% calc(var(--y) * 0.85),
+      #fff 6px,
+      transparent 20px
+    ),
+    radial-gradient(
+      circle at 65% calc(var(--y) * 1.2),
+      #fff 6px,
+      transparent 20px
+    );
+}
+
+.snowfall.layer2 {
+  animation: snowing2 10s linear infinite;
+  background-size: 30% 100%;
+}
+
+.snowfall.layer2::before {
+  inset: -8rem 0 0;
+  background-size: 40% 100%;
+  opacity: 0.8;
+  animation:
+    snowing2 10s linear infinite,
+    wind 10s ease-in-out infinite;
+}
+
+.snowfall.layer2::after {
+  inset: -16rem 0 0;
+  background-size: 50% 100%;
+  opacity: 0.7;
+  animation:
+    snowing2 10s linear infinite,
+    wind 8s ease-in-out infinite;
+}
+
+@keyframes snowing {
+  0% {
+    --y: -1%;
+  }
+
+  100% {
+    --y: 101%;
+  }
+}
+
+@keyframes wind {
+  50% {
+    translate: 200px;
+  }
+}
+
+@keyframes snowing2 {
+  20% {
+    --y: -1%;
+  }
+  100% {
+    --y: 101%;
+  }
 }
 
 #game-wrapper {
   display: none;
-  position: relative;
-  animation: snowing var(--snowfall) linear infinite;
 }
 
 #guessInput {
