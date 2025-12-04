@@ -8,10 +8,10 @@ export class DomController {
     const showBtn = document.getElementById("showBtn") as HTMLButtonElement;
     const submitBtn = document.getElementById("submitBtn") as HTMLButtonElement;
     const colorblindBtn = document.getElementById(
-      "colorblindBtn"
+      "colorblindBtn",
     ) as HTMLButtonElement;
     const guessInput = document.getElementById(
-      "guessInput"
+      "guessInput",
     ) as HTMLInputElement;
     const result = document.getElementById("result") as HTMLParagraphElement;
     const iframe = document.getElementById("ytplayer") as HTMLIFrameElement;
@@ -24,7 +24,7 @@ export class DomController {
       guessesDiv.id = "guesses";
       guessInput.parentElement?.insertBefore(
         guessesDiv,
-        guessInput.nextSibling
+        guessInput.nextSibling,
       );
     }
 
@@ -128,7 +128,7 @@ export class DomController {
                 "จงรัก",
                 "ใจรัก",
                 "บุพเพสันนิวาส",
-              ].includes(word)
+              ].includes(word),
           )
           .join(" ");
       }
@@ -195,14 +195,14 @@ export class DomController {
 
     // Handle main menu logic
     const classicButton = document.getElementById(
-      "classic-mode-btn"
+      "classic-mode-btn",
     ) as HTMLButtonElement;
     const endlessButton = document.getElementById(
-      "endless-mode-btn"
+      "endless-mode-btn",
     ) as HTMLButtonElement;
-		const christmasButton = document.getElementById(
-			"christmas-mode-btn"
-		) as HTMLButtonElement;
+    const christmasButton = document.getElementById(
+      "christmas-mode-btn",
+    ) as HTMLButtonElement;
 
     classicButton.addEventListener("click", (ev) => {
       const classicGame = document.getElementById("game-wrapper");
@@ -263,7 +263,7 @@ export class DomController {
       });
     });
 
-		christmasButton.addEventListener("click", (ev) => {
+    christmasButton.addEventListener("click", (ev) => {
       const christmasGame = document.getElementById("game-wrapper");
       if (christmasGame) {
         christmasGame.style.display = "block";
@@ -292,7 +292,6 @@ export class DomController {
         resetGame();
       });
     });
-
 
     /*
     // Submit guess button

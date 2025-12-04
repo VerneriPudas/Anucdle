@@ -4,18 +4,21 @@
 
   --input-width: 300px;
   --input-height: 30px;
+  --snowfall: 20s;
 }
 
 body {
   font-family: sans-serif;
   text-align: center;
   padding: 2rem;
-  background: url('anuc2.jpg') no-repeat center center fixed;
+  background: url("anuc2.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
 #game-wrapper {
   display: none;
+  position: relative;
+  animation: snowing var(--snowfall) linear infinite;
 }
 
 #guessInput {
@@ -63,10 +66,10 @@ body {
 }
 
 /* Improve player size for larger viewports */
-@media (min-width: 2048px) and ( min-height: 1152px) {
+@media (min-width: 2048px) and (min-height: 1152px) {
   #player-container {
     width: calc(var(--player-width) * 1.5);
-    height: calc(var(--player-height) * 1.5); 
+    height: calc(var(--player-height) * 1.5);
   }
 
   #guessInput {

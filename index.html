@@ -1,63 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Anussy</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="/menu-style.css" />
-  <style>
-    #game-wrapper { display: none; }
-  </style>
-</head>
-<body>
-  <h1>🎵 Anucdle 🎵</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Anussy</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/menu-style.css" />
+    <link rel="stylesheet" href="/snowfall.css" />
+    <style>
+      #game-wrapper {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎵 Anucdle 🎵</h1>
 
-  <div id="main-menu">
-    <div id="menu-button-container">
-      <button id=classic-mode-btn class="menu-button">
-        <h1>Classic mode</h1>
-        <div class="description">Enjoy daily Anuc challenge</div>
-      </button>
-      <button id=endless-mode-btn class="menu-button">
-        <h1>Endless mode</h1>
-        <div class="description">You get to enjoy anuc endlessly, forever, as much as you want</div>
-      </button>
-      <button id=christmas-mode-btn class="menu-button">
-        <h1>Christmas mode</h1>
-        <div class="description">testikikkeli</div>
-      </button>
- 
-		</div>
-  </div>
-
-  <div id="game-wrapper">
-    <h2 id="mode-name"></h2>
-    <div id="player-container">
-      <iframe id="ytplayer"
-        src=""
-        allow="autoplay"
-        width="560"
-        height="315"
-        frameborder="0"
-        style="display:none;">
-      </iframe>
-      <div id="cover">Press Start to play!</div>
+    <div id="main-menu">
+      <div id="menu-button-container">
+        <button id="classic-mode-btn" class="menu-button">
+          <h1>Classic mode</h1>
+          <div class="description">Enjoy daily Anuc challenge</div>
+        </button>
+        <button id="endless-mode-btn" class="menu-button">
+          <h1>Endless mode</h1>
+          <div class="description">
+            You get to enjoy anuc endlessly, forever, as much as you want
+          </div>
+        </button>
+        <button id="christmas-mode-btn" class="menu-button">
+          <h1>Christmas mode</h1>
+          <div class="description">testikikkeli</div>
+        </button>
+      </div>
     </div>
 
-    <div class="button-container">
-      <button id="startBtn">Start</button>
-      <button id="showBtn">Show Video</button>
-      <button id="colorblindBtn">Colorblind Mode</button>
+    <div id="game-wrapper">
+      <h2 id="mode-name"></h2>
+      <div id="player-container">
+        <iframe
+          id="ytplayer"
+          src=""
+          allow="autoplay"
+          width="560"
+          height="315"
+          frameborder="0"
+          style="display: none"
+        >
+        </iframe>
+        <div id="cover">Press Start to play!</div>
+      </div>
+
+      <div class="button-container">
+        <button id="startBtn">Start</button>
+        <button id="showBtn">Show Video</button>
+        <button id="colorblindBtn">Colorblind Mode</button>
+      </div>
+
+      <form id="guess-form">
+        <input id="guessInput" type="text" placeholder="Your guess..." />
+        <input type="submit" value="Submit Guess" id="submitBtn" />
+      </form>
+
+      <p id="result"></p>
     </div>
 
-    <form id="guess-form">
-      <input id="guessInput" type="text" placeholder="Your guess..." />
-      <input type="submit" value="Submit Guess" id="submitBtn" />
-    </form>
-
-    <p id="result"></p>
-  </div>
-
-  <script type="module" src="/src/index.ts"></script>
-</body>
+    <script type="module" src="/src/index.ts"></script>
+  </body>
 </html>
