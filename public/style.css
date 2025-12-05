@@ -1,6 +1,6 @@
 :root {
-  --player-width: 560px;
-  --player-height: 315px;
+  --player-width: 620px;
+  --player-height: 400px;
 
   --input-width: 300px;
   --input-height: 30px;
@@ -11,7 +11,6 @@
 body {
   font-family: sans-serif;
   text-align: center;
-  padding: 2rem;
   height: 100vh;
   background: url("anuc2.jpg") fixed no-repeat center / cover;
 
@@ -21,11 +20,36 @@ body {
 }
 
 .christmas-body {
+  font-family: "Christmas font", Arial, sans-serif;
+
   background:
     linear-gradient(white, #ff6969 85%) no-repeat,
     url("anuc.jpg") fixed no-repeat center / cover;
-
   background-blend-mode: soft-light;
+
+  border: 10px solid transparent;
+  border-image: url(christmas_border2.png) 33% round;
+  border-image-width: 200px;
+  border-image-outset: 20px;
+  overflow: hidden;
+
+  h1 {
+    font-size: 60pt;
+    color: white;
+    text-shadow: 4px 4px 20px red;
+    font-weight: normal;
+  }
+
+  h2 {
+    display: none;
+    font-size: 40pt;
+    color: white;
+    text-shadow: 8px 8px 40px green;
+  }
+
+  #player-container {
+    font-size: 30pt;
+  }
 }
 
 #game-wrapper {
@@ -74,6 +98,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@font-face {
+  font-family: "Christmas font";
+  src: url("Beyond Wonderland.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* Improve player size for larger viewports */
