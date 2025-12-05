@@ -1,0 +1,44 @@
+.snowfall {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.snowflake {
+  --small: 1px;
+  --medium: 1px;
+  width: var(--small);
+  height: var(--small);
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  animation:
+    snow 10s linear infinite,
+    wind 16s ease-in-out infinite;
+  top: -10%;
+  left: 10%;
+  box-shadow: 0rem 0rem 0.2rem 0.5rem #fff;
+}
+
+.snowflake:nth-child(2n + 3) {
+  /* 3, 5, 7, ... */
+  width: var(--medium);
+  height: var(--medium);
+  box-shadow: 0 0 0.2rem 0.75rem #fff;
+}
+
+@keyframes snow {
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes wind {
+  50% {
+    transform: translateX(120px);
+  }
+}

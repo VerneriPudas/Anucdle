@@ -1,4 +1,5 @@
 import { Game } from "../game/Game";
+import addSnowfall from "./snowfall";
 
 export class DomController {
   constructor(private game: Game) {}
@@ -8,10 +9,10 @@ export class DomController {
     const showBtn = document.getElementById("showBtn") as HTMLButtonElement;
     const submitBtn = document.getElementById("submitBtn") as HTMLButtonElement;
     const colorblindBtn = document.getElementById(
-      "colorblindBtn"
+      "colorblindBtn",
     ) as HTMLButtonElement;
     const guessInput = document.getElementById(
-      "guessInput"
+      "guessInput",
     ) as HTMLInputElement;
     const result = document.getElementById("result") as HTMLParagraphElement;
     const iframe = document.getElementById("ytplayer") as HTMLIFrameElement;
@@ -24,7 +25,7 @@ export class DomController {
       guessesDiv.id = "guesses";
       guessInput.parentElement?.insertBefore(
         guessesDiv,
-        guessInput.nextSibling
+        guessInput.nextSibling,
       );
     }
 
@@ -33,8 +34,6 @@ export class DomController {
     const maxAttempts = 6;
     let gameOver = false;
     let colorblindMode = false;
-
-    // Highlight matching parts of guess in green
 
     // Highlight matching substrings in green, others in red
     const highlightGuess = (guess: string, answer: string): string => {
@@ -130,7 +129,7 @@ export class DomController {
                 "จงรัก",
                 "ใจรัก",
                 "บุพเพสันนิวาส",
-              ].includes(word)
+              ].includes(word),
           )
           .join(" ");
       }
@@ -197,10 +196,13 @@ export class DomController {
 
     // Handle main menu logic
     const classicButton = document.getElementById(
-      "classic-mode-btn"
+      "classic-mode-btn",
     ) as HTMLButtonElement;
     const endlessButton = document.getElementById(
-      "endless-mode-btn"
+      "endless-mode-btn",
+    ) as HTMLButtonElement;
+    const christmasButton = document.getElementById(
+      "christmas-mode-btn",
     ) as HTMLButtonElement;
 
     classicButton.addEventListener("click", (ev) => {
@@ -254,6 +256,39 @@ export class DomController {
       // otherwise event listeners will break
       startBtn.addEventListener("click", () => {
         const videoId = this.game.startEndlessMode();
+        iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
+        iframe.style.display = "block";
+        cover.style.display = "flex";
+        cover.textContent = "It's Anuc time!";
+        resetGame();
+      });
+    });
+
+    christmasButton.addEventListener("click", (ev) => {
+      const christmasGame = document.getElementById("game-wrapper");
+      if (christmasGame) {
+        christmasGame.style.display = "block";
+      }
+
+      addSnowfall();
+      document.body.classList.add("christmas-body");
+
+      // Hide main menu when mode is selected
+      const mainMenu = document.getElementById("main-menu");
+      if (mainMenu) {
+        mainMenu.style.display = "none";
+      }
+
+      // Set mode name
+      const modeHeadline = document.getElementById("mode-name");
+      if (modeHeadline) {
+        modeHeadline.innerHTML = "Christmas mode";
+      }
+
+      // This is bit hacky since user cannot change game mode without refreshing the page
+      // otherwise event listeners will break
+      startBtn.addEventListener("click", () => {
+        const videoId = this.game.startChristmasMode();
         iframe.src = `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=0`;
         iframe.style.display = "block";
         cover.style.display = "flex";
