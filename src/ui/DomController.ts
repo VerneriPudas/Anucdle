@@ -272,6 +272,10 @@ export class DomController {
 
       addSnowfall();
       document.body.classList.add("christmas-body");
+      const headline = document.getElementById("page-headline");
+      if (headline) {
+        headline.innerHTML = "Merry anussy!";
+      }
 
       // Hide main menu when mode is selected
       const mainMenu = document.getElementById("main-menu");
